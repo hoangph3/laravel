@@ -28,3 +28,6 @@ Route::get('user', function(){
     return view('user');
 });
 
+Route::resource('users','App\Http\Controllers\UserController');
+
+

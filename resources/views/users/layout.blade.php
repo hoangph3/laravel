@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html lang="en">
   <head>
-  <title>Guest</title>
+  <title>Viettel Cyber Security</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
@@ -20,10 +20,7 @@
   </div>
 
   <ul>
-    <li><a href= <?php echo "user.php" ?> >Home</a></li>
-    <li><a href= <?php echo "message_box.php"?> >Mailbox</a></li>
-    <li><a href= <?php echo "assignment.php"?> >Assignment</a></li>
-    <li><a href="challenge.php">Challenge</a></li>
+    <li><a href= <?php echo "admin.php" ?> >Home</a></li>
     <div class="navbar">
       <a href="log_out.php" class="right">Log out</a>
     </div>
@@ -37,23 +34,7 @@
       <h5>While hack we dev - While dev we hack</h5>
     </div>
     <div class="main">
-      <h2 style="text-align:left;float:left;" >Students List</h2>
-      <a style="text-align:right;float:right;" href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" 
-      onclick="window.open('add_edit_student.php','_self')">Change Info<i class="w3-padding fa fa-pencil"></i></a>
-          <table class="styled-table">
-          <thead>
-              <tr>
-                  <th>Username</th>
-                  <th width="50"></th>
-                  <th width="50"></th>
-                  <th width="50"></th>
-              </tr>
-          </thead>
-          <tbody>
- 
-
-          </tbody>
-          </table>
+      @yield('content')
     </div>
   </div>
 
@@ -61,5 +42,6 @@
     <h2>Contact me</h2>
     <p>Viettel Cyber Security, 41st Floor, Keangnam 72 Landmark Building, Pham Hung Str., Nam Tu Liem Dist., Hanoi</p>
   </div>
+  
   </body>
   </html>
