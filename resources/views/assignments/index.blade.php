@@ -8,7 +8,7 @@
         <input class="w3-input w3-border" type="file" name="fileUpload" value="">
     </div><br/>
     <div class="w3-container">
-        <input class="button w3-right" type="submit" name="up" value="Upload &raquo;">
+        <input class="w3-button w3-right w3-teal" type="submit" name="up" value="Upload &raquo;">
     </div>
 </form> 
 @endif
@@ -22,7 +22,17 @@
 			</tr>
 		</thead>
 		<tbody>
-
+    @foreach ($files as $file)
+            <tr>
+                <td><a href="{{ route('downloadAssignment', $file->getFileName())}}">{{$file->getFileName()}}</a></td>
+                @if(session('level')==1)
+                <td><a class="w3-button w3-white w3-border w3-round-large" href="">View Submission</a></td>
+                @else 
+                <td><button class="w3-button w3-white w3-border w3-round-large w3-disabled" href="">View Submission</button></td>
+                @endif
+                <td><a class="w3-button w3-white w3-border w3-round-large" href="">Submit</a></td>
+            </tr>
+    @endforeach
 		</tbody>
-	  </table>
+      </table>
 @endsection

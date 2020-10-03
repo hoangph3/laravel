@@ -29,3 +29,5 @@ Route::resource('messages','App\Http\Controllers\MessageController')->middleware
 Route::get('assignments', 'App\Http\Controllers\AssignmentController@index')->name('assignment')->middleware('auth');
 
 Route::post('assignments', 'App\Http\Controllers\AssignmentController@upload')->name('postAssignment')->middleware('auth');
+
+Route::get('/download/{file}', 'App\Http\Controllers\AssignmentController@download')->name('downloadAssignment')->middleware('auth');

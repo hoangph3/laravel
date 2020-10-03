@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 
 class AssignmentController extends Controller
 {
-    public function index()
-    {  
-        return view('assignments.index');
+    public function index(Request $request)
+    {   
+        $directory = 'uploads/assignment/';
+        $files = collect(File::files($directory));
+
+        return view('assignments.index', compact('files'));
+    }
+
+    public function download($file_name)
+    {
+        $file_path = public_path('uploads/assignment/' .$file_name);
+        return response()->download($file_path);
     }
 
     public function upload(Request $request)
