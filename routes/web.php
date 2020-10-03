@@ -26,3 +26,7 @@ Route::resource('users','App\Http\Controllers\UserController');
 
 Route::resource('messages','App\Http\Controllers\MessageController');
 
+Route::get('user/{name?}', function($name = null)
+{
+    return $name;
+});

@@ -64,7 +64,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show',compact('user'));
+        return view('users.show',compact('user')); //compact -> truyen bien user qua View 
     }
 
     /**
@@ -75,7 +75,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit',compact('user'));
+        return view('users.edit',compact('user')); 
     }
 
     /**

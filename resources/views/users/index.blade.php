@@ -11,8 +11,7 @@ class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align
 class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" >Change Info<i class="w3-padding fa fa-pencil"></i></a>
 <table class="styled-table">
 @endif
-
-        <thead>
+    <thead>
             <tr>
                 <th>Username</th>
                 <th width="250">Action</th>

@@ -17,9 +17,10 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = DB::table('messages')->where('sender',session('username'))->get();
+        $messages = (DB::table('messages')->where('sender',session('username')))->simplePaginate(3);
+        $inbox = (DB::table('messages')->where('receiver',session('username')))->simplePaginate(3);
 
-        return view('messages.index',['messages'=>$messages]);
+        return view('messages.index', compact('messages', 'inbox'));
     }
 
     /**
@@ -29,7 +30,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('messages.create');
     }
 
     /**
@@ -40,7 +41,14 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = new Message([
+            'sender' => $request->get('sender'),
+            'receiver' => $request->get('receiver'),
+            'content' => $request->get('content'),
+            'time' => now(),
+        ]);
+        $message->save();
+        return redirect()->route('messages.index')->with('success','Created Successfully!');
     }
 
     /**
@@ -51,7 +59,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        return view('messages.index');
     }
 
     /**
@@ -62,7 +70,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
+        return view('messages.edit',compact('message'));
     }
 
     /**
@@ -72,9 +80,15 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request, $id)
     {
-        //
+        $message = Message::find($id);
+        $message->sender = $request->get('sender');
+        $message->receiver = $request->get('receiver');
+        $message->content = $request->get('content');
+        
+        $message->save();  
+        return redirect()->route('messages.index')->with('success','Updated Successfully!');
     }
 
     /**
@@ -85,6 +99,8 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return redirect()->route('messages.index')
+                        ->with('success','Deleted Successfully!');
     }
 }

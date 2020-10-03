@@ -2,7 +2,7 @@
 @section('content')
 
 <h2 style="text-align:left;float:left;" >View Details</h2>
-<a style="text-align:right;float:right;" href="" 
+<a style="text-align:right;float:right;" href="{{ route('messages.create', $user->username) }}" 
 class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" >Send Message<i class="w3-padding fa fa-pencil"></i></a>
 
 <form class="w3-container">
