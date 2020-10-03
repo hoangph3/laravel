@@ -14,13 +14,20 @@ class AuthController extends Controller
         $password = $request['password'];
         if(Auth::attempt(['username'=>$username, 'password'=>$password]))
         {
-            if(Auth::user()->level == 1) 
-            {
-                return redirect('/admin');
-            }
-            else return redirect('/user');
+            session()->put('id', Auth::user()->id);
+            session()->put('username', $username);
+            session()->put('level', Auth::user()->level);
+
+            if(Auth::user()->level == 1) return redirect('users');            
+            else return redirect('users');
         }
         else
             return view('login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return view('login');
     }
 }

@@ -45,10 +45,15 @@ class UserController extends Controller
             'phone' => 'required',
         ]);
   
-        User::create($request->all());
-   
-        return redirect()->route('users.index')
-                        ->with('success','Created Successfully!');
+        $user = new User([
+            'username' => $request->get('username'),
+            'password' => bcrypt($request->get('password')),
+            'fullname' => $request->get('fullname'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone')
+        ]);
+        $user->save();
+        return redirect()->route('users.index')->with('success','Created Successfully!');
     }
 
     /**
@@ -80,7 +85,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'username' => 'required',
@@ -90,10 +95,16 @@ class UserController extends Controller
             'phone' => 'required',
         ]);
   
-        $user->update($request->all());
+        $user = User::find($id);
+        $user->username = $request->get('username');
+        $user->password = bcrypt($request->get('password'));
+        $user->fullname = $request->get('fullname');
+        $user->email = $request->get('email');
+        $user->phone = $request->get('phone');
+        
+        $user->save();
   
-        return redirect()->route('users.index')
-                        ->with('success','Updated Successfully!');
+        return redirect()->route('users.index')->with('success','Updated Successfully!');
     }
 
     /**
@@ -105,7 +116,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')
-                        ->with('success','Deleted Successfully!');
+        return redirect()->route('users.index')->with('success','Deleted Successfully!');
     }
 }
