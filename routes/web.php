@@ -24,4 +24,5 @@ Route::post('login', 'App\Http\Controllers\AuthController@login')->name('login')
 
 Route::resource('users','App\Http\Controllers\UserController');
 
+Route::resource('messages','App\Http\Controllers\MessageController');
 

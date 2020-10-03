@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\DB;
@@ -15,12 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'username'=>'vcshoang',
-            'password'=>bcrypt('1'),
-            'fullname'=>'Phạm Hoàng',
-            'email'=>'phamhoanghxh1@gmail.com',
-            'phone'=>'0339362666',
+        DB::table('messages')->insert([
+            'sender'=>'aaa',
+            'receiver'=>'vcsadmin',
+            'content'=>'hehe',
+            'time'=>now(),
         ]);
     }
 }
