@@ -14,19 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function(){
+Route::get('login', function(){
     return view('login');
 });
 
-Route::get('logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
-
 Route::post('login', 'App\Http\Controllers\AuthController@login')->name('login');
 
-Route::resource('users','App\Http\Controllers\UserController');
+Route::get('logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 
-Route::resource('messages','App\Http\Controllers\MessageController');
+Route::resource('users','App\Http\Controllers\UserController')->middleware('auth');
 
-Route::get('user/{name?}', function($name = null)
-{
-    return $name;
-});
+Route::resource('messages','App\Http\Controllers\MessageController')->middleware('auth');
+
+Route::get('assignments', 'App\Http\Controllers\AssignmentController@index')->name('assignment')->middleware('auth');
+
+Route::post('assignments', 'App\Http\Controllers\AssignmentController@upload')->name('postAssignment')->middleware('auth');

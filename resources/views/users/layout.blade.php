@@ -22,7 +22,7 @@
 <ul>
   <li><a href="{{ route('users.index') }}">Home</a></li>
   <li><a href="{{ route('messages.index') }}">Message</a></li>
-  <li><a href="">Assignment</a></li>
+  <li><a href="{{ route('assignment') }}">Assignment</a></li> <!-- goi route theo ten assignment -->
   <li><a href="">Challenge</a></li>
   <div class="navbar">
     <a href="{{ route('logout') }}" class="right">Log out</a>
