@@ -53,7 +53,7 @@ class UserController extends Controller
             'phone' => $request->get('phone')
         ]);
         $user->save();
-        return redirect()->route('users.index')->with('success','Created Successfully!');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -104,7 +104,7 @@ class UserController extends Controller
         
         $user->save();
   
-        return redirect()->route('users.index')->with('success','Updated Successfully!');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -116,6 +116,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success','Deleted Successfully!');
+        return redirect()->route('users.index');
     }
 }

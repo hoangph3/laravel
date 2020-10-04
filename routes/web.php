@@ -34,9 +34,7 @@ Route::post('assignments', 'App\Http\Controllers\AssignmentController@upload')->
 
 Route::get('/download/assignment/{file}', 'App\Http\Controllers\AssignmentController@download')->name('downloadAssignment')->middleware('auth');
 
-Route::get('assignments/{foldername}', function($foldername){
-    return view('assignments.solution', ['foldername'=>$foldername]);
-})->name('solution')->middleware('auth');
+Route::get('assignments/{foldername}', function($foldername){ return view('assignments.solution', ['foldername'=>$foldername]); })->name('solution')->middleware('auth');
 
 Route::post('assignments/{folder}', 'App\Http\Controllers\AssignmentController@postSolution')->name('postSolution')->middleware('auth');
 
@@ -45,3 +43,11 @@ Route::get('assignments/submission/{foldername}', 'App\Http\Controllers\Assignme
 Route::get('/download/{folder}/solution/{file}', 'App\Http\Controllers\AssignmentController@clone')->name('downloadSolution')->middleware('auth');
 
 //Route with Challenge
+Route::get('challenges', 'App\Http\Controllers\ChallengeController@index')->name('challenge')->middleware('auth');
+
+Route::post('challenges', 'App\Http\Controllers\ChallengeController@upload')->name('postChallenge')->middleware('auth');
+
+Route::get('challenges/{folder}', 'App\Http\Controllers\ChallengeController@show')->name('solveInterface')->middleware('auth');
+
+Route::post('challenges/solution/{folder}', 'App\Http\Controllers\ChallengeController@solution')->name('solveChallenge')->middleware('auth');
+

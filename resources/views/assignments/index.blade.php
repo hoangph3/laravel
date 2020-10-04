@@ -1,6 +1,9 @@
 @extends('users.layout')
 @section('content')
 @if(session('level')==1)
+@if (session('alert'))
+    <script>alert("{{session('alert')}}")</script>
+@endif
 <h2>Create Assignment</h2>
 <form class="w3-container" action="{{ route('postAssignment') }}" method="POST" enctype="multipart/form-data">
     @csrf

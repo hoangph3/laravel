@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {   
         $directory = 'uploads/assignment/';
         $allfiles = File::files($directory);
@@ -42,7 +42,7 @@ class AssignmentController extends Controller
             }
             else
             {
-                return view('assignments.index', compact('allfiles'));
+                return redirect()->back()->with('alert', 'File Exist!');
             }
         }
     }
@@ -71,7 +71,7 @@ class AssignmentController extends Controller
             }
             else
             {
-                return view('assignments.index', compact('allfiles'));
+                return redirect()->back()->with('alert', 'File Exist!');
             }
         }
     }

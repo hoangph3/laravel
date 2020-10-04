@@ -1,5 +1,8 @@
 @extends('users.layout')
 @section('content')
+@if (session('alert'))
+    <script>alert("{{session('alert')}}")</script>
+@endif
 <h2>Upload Your Solution</h2>
 <form class="w3-container" action="{{route('postSolution', $foldername)}}" method="post" enctype="multipart/form-data">
     @csrf
