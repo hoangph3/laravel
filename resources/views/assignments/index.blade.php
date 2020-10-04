@@ -22,15 +22,15 @@
 			</tr>
 		</thead>
 		<tbody>
-    @foreach ($files as $file)
+    @foreach ($allfiles as $file)
             <tr>
                 <td><a href="{{ route('downloadAssignment', $file->getFileName())}}">{{$file->getFileName()}}</a></td>
                 @if(session('level')==1)
-                <td><a class="w3-button w3-white w3-border w3-round-large" href="">View Submission</a></td>
+                <td><a class="w3-button w3-white w3-border w3-round-large" href="{{route('submission', $file->getFileName())}}">View Submission</a></td>
                 @else 
                 <td><button class="w3-button w3-white w3-border w3-round-large w3-disabled" href="">View Submission</button></td>
                 @endif
-                <td><a class="w3-button w3-white w3-border w3-round-large" href="">Submit</a></td>
+                <td><a class="w3-button w3-white w3-border w3-round-large" href="{{route('solution', $file->getFileName())}}">Submit</a></td>
             </tr>
     @endforeach
 		</tbody>
