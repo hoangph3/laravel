@@ -87,6 +87,7 @@ class MessageController extends Controller
         $message->sender = $request->get('sender');
         $message->receiver = $request->get('receiver');
         $message->content = $request->get('content');
+        $message->time = now();
         
         $message->save();  
         return redirect()->route('messages.index')->with('success','Updated Successfully!');
