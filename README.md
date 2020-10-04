@@ -1,6 +1,6 @@
 # Web Security - VCS
 ### Website demo:
-vcshoangp-challenge5b.000webhostapp.com/login
+https://vcshoangp-challenge5b.000webhostapp.com/login
 ### Public Account:
 **1. Teacher:**
 * Username: vcsadmin
