@@ -28,9 +28,9 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function send($username)
     {
-        return view('messages.create');
+        return  view('messages.create',compact('username'));
     }
 
     /**
@@ -57,9 +57,10 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show(Message $message, $username)
     {
-        return view('messages.index');
+        //
+
     }
 
     /**

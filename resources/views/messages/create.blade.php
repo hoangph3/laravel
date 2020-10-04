@@ -10,7 +10,7 @@
     </div><br/>
     <div class="w3-container">
         <label for="receiver">To</label>
-        <input required="true" type="text" class="w3-input" style="width:100%" name="receiver" value="">
+        <input required="true" type="text" class="w3-input" style="width:100%" name="receiver" value="{{ $username }}" readonly>
     </div><br/>
     <div class="w3-container">
         <label for="content">Content</label>

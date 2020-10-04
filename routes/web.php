@@ -27,6 +27,8 @@ Route::resource('users','App\Http\Controllers\UserController')->middleware('auth
 
 Route::resource('messages','App\Http\Controllers\MessageController')->middleware('auth');
 
+Route::get('messages/to/{username}','App\Http\Controllers\MessageController@send')->name('message')->middleware('auth');
+
 //Route with Assignment
 Route::get('assignments', 'App\Http\Controllers\AssignmentController@index')->name('assignment')->middleware('auth');
 
