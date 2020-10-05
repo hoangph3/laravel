@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route Login - LogOut
 Route::get('/', function(){
     return view('login');
 });
-//Route Login - LogOut
+
 Route::get('login', function(){
     return view('login');
 });

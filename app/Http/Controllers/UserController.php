@@ -97,7 +97,9 @@ class UserController extends Controller
   
         $user = User::find($id);
         $user->username = $request->get('username');
-        $user->password = bcrypt($request->get('password'));
+        if ($user->password != $request->get('password')) {
+            $user->password = bcrypt($request->get('password'));
+        }
         $user->fullname = $request->get('fullname');
         $user->email = $request->get('email');
         $user->phone = $request->get('phone');
